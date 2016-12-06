@@ -1,0 +1,74 @@
+*
+{
+    margin: 0;
+    padding: 0;
+}
+body
+{
+    background-color: #2C3E50;
+}
+
+.TITRE
+{
+    font-size: 40px;
+    text-align: center;
+    color: #C1BDD3;
+    margin: 40px;
+}
+
+.TITRE:hover
+{
+    color: #FFFFFF;
+}
+
+.barrenav
+{
+    text-align: center;
+    background-color: #46B29D;
+    height: 50px;
+    padding: 25px 0px 0 0px;
+}
+
+.navlien
+{
+    text-decoration: none;
+    color: #FFFFFF;
+    padding: 0 50px 0 50px;
+}
+
+.navlien:hover
+{
+    background-color: #DE5D49;
+    padding: 25px 50px 32px 50px;
+}
+
+.drnarticle
+{
+    text-align: center;
+    background-color: #718596;
+    color: #FFFFFF;
+    margin: 15px auto;
+    width: 70%;
+    padding: 5px;
+}
+
+.billet
+{
+    background-color: #67BDBE;
+    color: #000000;
+    width: 70%;
+    margin: 10px auto;
+}
+
+.edit
+{
+    background-color: #5DACAB;
+    color: #509897;
+}
+
+.pagination
+{
+    text-align: center;
+    padding: 0 10px 20px 0;
+    border: 2px solid ;
+}
