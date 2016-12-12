@@ -22,19 +22,23 @@ if (isset($_GET['billet'])) {
 <head>
     <meta charset="UTF-8">
     <title>Commentaire</title>
-    <link rel="stylesheet" href="css/blog.css">
+    <link rel="stylesheet" href="css/com.css">
 </head>
 <body>
-<a href="User.php?id= . $_SESSION['id']">Accueil</a>
-<H1>Mon super blog </H1>
+<H1 class="TITRE">Mon super blog </H1>
 
+<div class="barrenav">
+    <a class="navlien" href="User.php?id= . $_SESSION['id']">Accueil</a>
+</div>
 
-<?php
+<div class="billet">
+    <?php
 
-echo '<p class="billet"><H3>' . $db['titre'] . ' &nbsp;' . date($db['date']) . '</H3></p>';
-echo '<p id="billet">' . htmlentities($db['billet']) . '</p>';
+    echo '<p><H3 id="texttitre">' . $db['titre'] . ' &nbsp;' . date($db['date']) . '</H3></p>';
+    echo '<p id="textarticle">' . htmlentities($db['billet']) . '</p>';
 
-?>
+    ?>
+</div>
 
 <H4>Commentaires :</H4>
 
