@@ -67,7 +67,7 @@ $db = $recupBillets->fetchAll();
 <?php
 foreach($db as $bite)
 {
-    echo '<div class="billet"><H3 class="titreart">'.$bite['titre'].'</H3>';
+    echo '<div class="billet"><H3 class="titreart">'.htmlentities($bite['titre']).'</H3>';
     echo '<p id="texte">'.htmlentities($bite['billet']);
     echo '<p class="commentaire padding">'.date($bite['date']).'</p>'.'<p class="commentaire align-right align-up"><a class="btn-com" href="edit.php?billet='.$bite['id'].'">Edit</a></p></div>';
 }
