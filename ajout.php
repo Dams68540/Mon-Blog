@@ -1,6 +1,6 @@
 <?php
 session_start();
-$bdd = new PDO('mysql:host=localhost;dbname=test', 'root', 'root');
+$bdd = new PDO('mysql:host=127.0.0.1;dbname=Blog', 'root', 'toor');
 
 if (!empty($_SESSION)) {
     if (isset($_POST['ajouter']) && !empty($_POST['titre']) && !empty($_POST['billet'])) {
@@ -30,11 +30,11 @@ else
 </div>
 <p class="titrepage">Ajouter un billet :</p>
 <div class="billet">
-<form action="" method="POST">
-    <p><textarea id="texttitre" type="text" name="titre" placeholder="Titre" id="" cols="30" rows="2"></textarea>
-    <p><textarea id="textarticle" rows="8" cols="122" type="text" name="billet" placeholder="Ajouter votre article ici !"></textarea></p>
-    <input class="btnajouter" type="submit" name="ajouter" value="Ajouter">
-</form>
+    <form action="" method="POST">
+        <p><textarea id="texttitre" type="text" name="titre" placeholder="Titre" cols="30" rows="2"></textarea>
+        <p><textarea id="textarticle" rows="8" cols="122" type="text" name="billet" placeholder="Ajouter votre article ici !"></textarea></p>
+        <input class="btnajouter" type="submit" name="ajouter" value="Ajouter">
+    </form>
 </div>
 
 </body>

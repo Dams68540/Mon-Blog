@@ -1,5 +1,5 @@
 <?php
-$bdd = new PDO('mysql:host=localhost;dbname=test', 'root', 'root');
+$bdd = new PDO('mysql:host=127.0.0.1;dbname=Blog', 'root', 'toor');
 session_start();
 if (isset($_SESSION['id']))
 {
@@ -64,13 +64,12 @@ $db = $recupBillets->fetchAll();
     </div>
 </div>
 
-<div class="drnarticle">Dernier article publié</div>
 <?php
 foreach($db as $bite)
 {
     echo '<div class="billet"><H3 class="titreart">'.$bite['titre'].'</H3>';
-    echo '<p class="billet">'.htmlentities($bite['billet']);
-    echo '<p class="edit">'.date($bite['date']).'</p>'.'<p class="edit"><a href="edit.php?billet='.$bite['id'].'">Edit</a></p></div>';
+    echo '<p id="texte">'.htmlentities($bite['billet']);
+    echo '<p class="commentaire padding">'.date($bite['date']).'</p>'.'<p class="commentaire align-right align-up"><a class="btn-com" href="edit.php?billet='.$bite['id'].'">Edit</a></p></div>';
 }
 ?>
 <br>

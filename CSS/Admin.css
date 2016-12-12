@@ -52,14 +52,6 @@ body
     padding: 5px;
 }
 
-.billet
-{
-    background-color: #67BDBE;
-    color: #000000;
-    width: 70%;
-    margin: 10px auto;
-}
-
 .edit
 {
     background-color: #5DACAB;
@@ -71,4 +63,66 @@ body
     text-align: center;
     padding: 0 10px 20px 0;
     border: 2px solid ;
+}
+
+#texte
+{
+    padding: 10px 10px 0px 10px;
+}
+
+.commentaire
+{
+    background-color: #5DACAB;
+    color: #509897;
+    margin: 25px auto;
+}
+
+.pagination
+{
+    text-align: center;
+    padding: 0 10px 20px 0;
+    border: 2px solid ;
+}
+
+.align-right
+{
+    text-align: right;
+    padding: 0px 5px 0px 0px;
+    margin: -25px auto;
+    background-color: #5DACAB;
+}
+
+.align-up
+{
+    margin: -45px auto;
+}
+
+.padding
+{
+    padding: 0px 0px 0px 5px;
+    color: #558075;
+}
+
+.btn-com
+{
+    text-decoration: none;
+    color: #558075;
+}
+
+.btn-com:hover
+{
+    color: #bededd;
+}
+
+.titreart
+{
+    text-align: center;
+    background-color: #5DACAB;
+    color: #000000;
+}
+.billet
+{
+    background-color: #67BDBE;
+    width: 70%;
+    margin: 70px auto;
 }

@@ -49,13 +49,13 @@ body
     padding: 25px 50px 32px 50px;
 }
 
-.drnarticle
+.titrepage
 {
     text-align: center;
     background-color: #718596;
     color: #FFFFFF;
     margin: 15px auto;
-    width: 80%;
+    width: 1044px;
     padding: 5px;
 }
 
@@ -63,6 +63,41 @@ body
 {
     background-color: #67BDBE;
     color: #000000;
-    width: 70%;
-    margin: 30px auto;
+    width: 1044px;
+    height: 200px;
+    margin: 10px auto;
+}
+
+.btnedit
+{
+    height: 40px;
+    margin-bottom: -20px;
+    margin-top: 20px;
+    margin-left: -0px;
+    margin-right: -20px;
+    width: 1044px;
+    background-color: #5DACAB;
+    color: #bededd;
+    font-size: 15px;
+    border: none;
+}
+
+.btnedit:hover
+{
+    background-color: #457F7E;
+    color: #FFFFFF;
+}
+
+#texttitre
+{
+    margin: 5px 400px;
+    resize: none;
+    border: none;
+}
+
+#textarticle
+{
+    margin: 5px 85px;
+    resize: none;
+    border: none;
 }

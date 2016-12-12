@@ -2,7 +2,7 @@
 session_start();
 if (!empty($_SESSION))
 {
-$bdd = new PDO('mysql:host=localhost;dbname=test', 'root', 'root');
+$bdd = new PDO('mysql:host=127.0.0.1;dbname=Blog', 'root', 'toor');
 
 $requser = $bdd->query('SELECT * FROM connexionBlog');
 $db = $requser->fetchAll();

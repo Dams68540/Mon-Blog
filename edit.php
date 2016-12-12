@@ -1,7 +1,7 @@
 <?php
 session_start();
 
-$bdd = new PDO('mysql:host=localhost;dbname=test', 'root', 'root');
+$bdd = new PDO('mysql:host=127.0.0.1;dbname=Blog', 'root', 'toor');
 
 if (isset($_SESSION))
 {
@@ -64,19 +64,23 @@ $as = $suppr->fetch();
     <a class="navlien" href="Admin.php">Accueil</a>
 </div>
 
+<p class="titrepage">Éditer un article :</p>
+
+<div class="billet">
 <form action="" method="post">
     <?php
 
-    echo '<p class="billet"><H3><input type="text" value="' . $as["titre"] . '" name="titre"> &nbsp;' . date($as['date']) . '</H3></p>';
-    echo '<p id="billet"><textarea class="textarea" rows="7" cols="123"  type="text" name="billet">' . $as["billet"] . '</textarea></p>';
+    echo '<p><textarea id="texttitre" name="titre" cols="30" rows="2">'.$as["titre"].'</textarea></p>';
+    echo '<p><textarea id="textarticle" class="textarea" rows="7" cols="123"  type="text" name="billet">' . $as["billet"] . '</textarea></p>';
 
     }
     ?>
-    <p style="text-align: center"><input type="submit" name="edit" value="Edit">
-        <input type="submit" name="supprimer" value="Supprimer"></p>
+    <p><input class="btnedit" type="submit" name="edit" value="Edit">
+        <input class="btnedit" type="submit" name="supprimer" value="Supprimer"></p>
 </form>
+</div>
 
-
+<div class="commentaire">
 <H4>Commentaires :</H4>
 
 
@@ -84,6 +88,7 @@ $as = $suppr->fetch();
     <input type="text" name="commentaire">
     <input type="submit" name="envoyer" value="Envoyer">
 </form>
+</div>
 
 <?php
 if (isset($_POST['envoyer']) && !empty($_POST['commentaire'])) {

@@ -1,5 +1,5 @@
 <?php
-$bdd = new PDO('mysql:host=localhost;dbname=test', 'root', 'root');
+$bdd = new PDO('mysql:host=127.0.0.1;dbname=Blog', 'root', 'toor');
 
 $articlesParPage = 5;
 $articlesTotalesReq = $bdd->query('SELECT id FROM blog');
@@ -48,7 +48,7 @@ $db = $recupBillets->fetchAll();
     <?php
     foreach($db as $byte)
     {
-        echo '<div class="billet"><H3 class="titreart">'.$byte['titre'].'</H3>';
+                            echo '<div class="billet"><H3 class="titreart">'.$byte['titre'].'</H3>';
         echo '<p id="texte">'.htmlentities($byte['billet']).'</p>';
         echo '<p class="commentaire padding">'.date($byte['date']).'</p>'.'<p class="commentaire align-right align-up"><a class="btn-com" href="Commentaires.php?billet='.$byte['id'].'">Commentaires</a></p></div>';
     }
