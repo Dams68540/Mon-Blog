@@ -4,9 +4,10 @@ $bdd = new PDO('mysql:host=127.0.0.1;dbname=Blog', 'root', 'toor');
 
 if (!empty($_SESSION)) {
     if (isset($_POST['ajouter']) && !empty($_POST['titre']) && !empty($_POST['billet'])) {
-        $reqbillet = $bdd->prepare('INSERT INTO blog(titre, billet, date) VALUES(?, ?, NOW())');
+        $reqbillet = $bdd->prepare('INSERT INTO blog(titre, billet, date, pseudo) VALUES(?, ?, NOW(), ?)');
         $reqbillet->bindParam(1, $_POST['titre']);
         $reqbillet->bindParam(2, $_POST['billet']);
+        $reqbillet->bindParam(3, $_SESSION['pseudo']);
         $reqbillet->execute();
     }
 }

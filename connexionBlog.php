@@ -79,9 +79,12 @@ if (isset($_POST['connexion'])) {
 <?php
 
 if (isset($erreur)) {
-    echo '<p class="erreur">'.$erreur.'</p>';
+    ?>
+<script>alert("<?php echo $erreur ?>")</script>
+<?php
 }
 ?>
+
 
 </body>
 </html>

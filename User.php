@@ -34,7 +34,7 @@ else
 
 $depart =  ($pageCourante-1)*$articlesParPage;
 
-$recupBillets = $bdd->query('SELECT id, titre, billet, DATE_FORMAT(date, \'%d/%m/%Y %H:%i:%s\') AS date FROM blog ORDER BY id DESC LIMIT '.$depart.', '.$articlesParPage);
+$recupBillets = $bdd->query('SELECT id, titre, billet, DATE_FORMAT(date, \'%d/%m/%Y %H:%i:%s\') AS date, pseudo FROM blog ORDER BY id DESC LIMIT '.$depart.', '.$articlesParPage);
 $db = $recupBillets->fetchAll();
 ?>
 
@@ -58,9 +58,19 @@ echo '<h1 class="TITRE">BONJOUR'.' '. $_SESSION['pseudo'].'</h1>'
 <?php
 foreach($db as $byte)
 {
+    $recupgrade = $bdd->prepare('SELECT * FROM connexionBlog WHERE pseudo =?');
+    $recupgrade->execute(array($byte['pseudo']));
+    $grade = $recupgrade->fetch(pdo::FETCH_OBJ)->grade;
+
+    $_SESSION['grade'] = $grade;
+
+    $grade == 2 ? $gradeUser = ' (Admin)': $gradeUser = '';
+
     echo '<div class="billet"><H3 class="titreart">'.$byte['titre'].'</H3>';
     echo '<p id="texte">'.htmlentities($byte['billet']).'</p>';
-    echo '<p class="commentaire padding">'.date($byte['date']).'</p>'.'<p class="commentaire align-right align-up"><a class="btn-com" href="sessionCom.php?billet='.$byte['id'].'">Commentaires</a></p></div>';
+    echo '<p class="commentaire padding">'.date($byte['date']).' - '.$byte['pseudo']. $gradeUser . '</p>'.'<p class="commentaire align-right align-up"><a class="btn-com" href="sessionCom.php?billet='.$byte['id'].'">Commentaires</a></p></div>';
+
+
 }
 ?>
 <br>
