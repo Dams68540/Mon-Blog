@@ -53,6 +53,7 @@ echo '<h1 class="TITRE">BONJOUR'.' '. $_SESSION['pseudo'].'</h1>'
 <div class="barrenav">
 <a class="navlien" href="ajoutuser.php">Ajouter un billet</a>
 <a class="navlien" href="deconnexionBlog.php">Se déconnecter</a>
+<a class="navlien" href="profil.php">Mon profil</a>
 </div>
 
 <?php
