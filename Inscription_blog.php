@@ -15,14 +15,16 @@
 
 $bdd = new PDO('mysql:host=127.0.0.1;dbname=Blog', 'root', 'toor');
 
+
 if (isset($_POST['inscription'])) {
-    $nom = htmlentities($_POST['nom']);
-    $prenom = htmlentities($_POST['prenom']);
-    $email = htmlentities($_POST['mail']);
-    $email2 = htmlentities($_POST['mail2']);
-    $pseudo = htmlentities($_POST['pseudo']);
+    $nom = $_POST['nom'];
+    $prenom = $_POST['prenom'];
+    $email = $_POST['mail'];
+    $email2 = $_POST['mail2'];
+    $pseudo = $_POST['pseudo'];
     $mdp = sha1($_POST['mdp']);
     $mdp2 = sha1($_POST['mdp2']);
+
 
     if (!empty($_POST['nom']) && !empty($_POST['prenom']) && !empty($_POST['mail']) && !empty($_POST['mail2']) && !empty($_POST['pseudo']) && !empty($_POST['mdp']) && !empty($_POST['mdp2'])) {
         $pseudolength = strlen($pseudo);
@@ -38,8 +40,8 @@ if (isset($_POST['inscription'])) {
                         $pseudoexist = $reqpseudo->fetch();
                         if ($pseudoexist == 0) {
                             if ($mdp == $mdp2) {
-                                $insertmdp = $bdd->prepare('INSERT INTO connexionBlog(grade, nom, prenom, pseudo, mail, motdepasse) VALUES (1, ?, ?, ?, ?, ?)');
-                                $insertmdp->execute(array($nom, $prenom, $pseudo, $email, $mdp));
+                                $insertmdp = $bdd->prepare('INSERT INTO connexionBlog(grade, nom, prenom, mail, pseudo, motdepasse, dateinscription) VALUES (1, ?, ?, ?, ?, ?, NOW())');
+                                $insertmdp->execute(array($nom, $prenom, $email, $pseudo, $mdp));
                                 $erreur = 'Votre compte à bien été créé !';
                             } else {
                                 $erreur = 'Les mots de passe ne correspondent pas !';
@@ -67,6 +69,7 @@ if (isset($_POST['inscription'])) {
 }
 
 
+
 ?>
 
 <div class="Titreblock">
@@ -90,8 +93,11 @@ if (isset($_POST['inscription'])) {
 </form>
 
 <?php
+
 if (isset($erreur)) {
-    echo '<p class="erreur">' . $erreur . '</p>';
+    ?>
+    <script>alert("<?php echo $erreur ?>")</script>
+    <?php
 }
 ?>
 </body>
