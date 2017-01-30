@@ -7,7 +7,7 @@
 <body>
 <h1 class="TITRE">Inscription du blog</h1>
 <div class="barrenav">
-    <a class="navlien" href="blog.php">Accueil</a>
+    <a class="navlien" href="index.php">Accueil</a>
     <a class="navlien" href="connexionBlog.php">Connexion</a>
 </div>
 

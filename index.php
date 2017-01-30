@@ -18,13 +18,6 @@ else
 
 $depart =  ($pageCourante-1)*$articlesParPage;
 
-if (isset($_POST['envoyer']) && !empty($_POST['titre']) && !empty($_POST['billet']))
-{
-    $reqbillet = $bdd->prepare('INSERT INTO blog(titre, billet, date) VALUES (?, ?, NOW())');
-    $reqbillet->bindParam(1, $_POST['titre']);
-    $reqbillet->bindParam(2, $_POST['billet']);
-    $reqbillet->execute();
-}
 
 $recupBillets = $bdd->query('SELECT id, titre, billet, DATE_FORMAT(date, \'%d/%m/%Y %H:%i:%s\') AS date, pseudo FROM blog ORDER BY id DESC LIMIT '.$depart.', '.$articlesParPage);
 $db = $recupBillets->fetchAll();
@@ -58,7 +51,7 @@ $db = $recupBillets->fetchAll();
 
         echo '<div class="billet"><H3 class="titreart">'.$byte['titre'].'</H3>';
         echo '<p id="texte">'.htmlentities($byte['billet']).'</p>';
-        echo '<p class="commentaire padding">'.date($byte['date']).' - '.$byte['pseudo']. $gradeUser . '</p>'.'<p class="commentaire align-right align-up"><a class="btn-com" href="sessionCom.php?billet='.$byte['id'].'">Commentaires</a></p></div>';
+        echo '<p class="commentaire padding">'.date($byte['date']).' - '.$byte['pseudo']. $gradeUser . '</p>'.'<p class="commentaire align-right align-up"><a class="btn-com" href="commentaires.php?billet='.$byte['id'].'">Commentaires</a></p></div>';
 
 
     }

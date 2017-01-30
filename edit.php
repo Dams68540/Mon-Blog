@@ -80,15 +80,8 @@ $as = $suppr->fetch();
 </form>
 </div>
 
-<div class="commentaire">
-<H4>Commentaires :</H4>
+<H4 class="titrecom"><a id="liencom" href="#haha">Commentaires :</a></H4>
 
-
-<form action="" method="post">
-    <input type="text" name="commentaire">
-    <input type="submit" name="envoyer" value="Envoyer">
-</form>
-</div>
 
 <?php
 if (isset($_POST['envoyer']) && !empty($_POST['commentaire'])) {
@@ -112,10 +105,20 @@ if (isset($_POST['envoyer']) && !empty($_POST['commentaire'])) {
 
 
         foreach ($db as $com) {
-            echo '<p><strong>' . htmlentities($com['pseudo']) . ' : ' . date($com['date']) . '</strong></p>';
-            echo '<p>' . htmlentities($com['commentaire']) . '</p>';
+            echo '<div class="commentaire"><p><strong>' . htmlentities($com['pseudo']) . ' : ' . date($com['date']) . '</strong></p>';
+            echo '<p>' . htmlentities($com['commentaire']) . '</p></div>';
         }
     }
+    ?>
+<div class="commentaire">
+    <form action="" method="post">
+        <p id="haha"></p>
+        <textarea id="textcom" name="commentaire" cols="100" rows="4"></textarea>
+        <input class="btncom" type="submit" name="envoyer" value="Envoyer">
+    </form>
+</div>
+<?php
+
 }
 else {
     header('Location: connexionBlog.php');

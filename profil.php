@@ -1,22 +1,21 @@
 <?php
 session_start();
-
-$bdd = new PDO('mysql:host=127.0.0.1;dbname=Blog', 'root', 'toor');
-
 if (isset($_SESSION['id']))
 {
-$nom = $db['nom'];
-$prenom = $db['prenom'];
-$email = $db['mail'];
-$pseudo = $db['pseudo'];
-$date = $db['dateinscription']
+$bdd = new PDO('mysql:host=127.0.0.1;dbname=Blog', 'root', 'toor');
 
-$recupinfo = $bdd->prepare('SELECT * FROM connexionBlog WHERE id = ?');
-$recupinfo->execute(array($nom, $prenom, $email, $pseudo, $date));
-$db = $recupinfo->fetch();
+$requser = $bdd->query('SELECT id, nom, prenom, mail, pseudo, DATE_FORMAT(dateinscription, \'%d/%m/%Y \') AS dateinscription FROM connexionBlog WHERE id=' . $_SESSION['id']);
+$db = $requser->fetch();
 
-var_dump($nom, $prenom, $email, $pseudo, $date);
+if (isset($_POST['ajouter']) && !empty($_POST['titre']) && !empty($_POST['billet'])) {
+    $reqbillet = $bdd->prepare('INSERT INTO blog(titre, billet, date, pseudo) VALUES(?, ?, NOW(), ?)');
+    $reqbillet->bindParam(1, $_POST['titre']);
+    $reqbillet->bindParam(2, $_POST['billet']);
+    $reqbillet->bindParam(3, $_SESSION['pseudo']);
+    $reqbillet->execute();
+}
 ?>
+
 
 <html>
 <head>
@@ -26,22 +25,33 @@ var_dump($nom, $prenom, $email, $pseudo, $date);
 <body>
 
 <?php
+echo '<p>' . $db['nom'] . ' ' . $db['prenom'] . '</p>';
+echo '<p>' . $db['mail'] . '</p>';
+echo '<p>' . $db['pseudo'] . '</p>';
+echo '<p>' . $db['dateinscription'] . '</p>';
 
-echo '<p>'.htmlentities($nom).'</p>';
-echo '<p>'.htmlentities($prenom).'</p>';
-echo '<p>'.htmlentities($email).'</p>';
-echo '<p>'.htmlentities($pseudo).'</p>';
-echo '<p>'.$date.'</p>';
+?>
 
-
+<p class="titrepage">Ajouter un billet :</p>
+<div class="billet">
+    <form action="" method="POST">
+        <p><textarea id="texttitre" type="text" name="titre" placeholder="Titre" cols="30" rows="2"></textarea>
+        <p><textarea id="textarticle" rows="8" cols="122" type="text" name="billet"
+                     placeholder="Ajouter votre article ici !"></textarea></p>
+        <input class="btnajouter" type="submit" name="ajouter" value="Ajouter">
+    </form>
+</div>
+<div>
+    <form action="" method="POST">
+        <input type="datetime" name="datenaissance">
+    </form>
+</div>
+<?php
 }
-else
-{
+else {
     header('Location: connexionBlog.php');
 }
 ?>
-
-
 
 </body>
 </html>

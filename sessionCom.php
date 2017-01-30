@@ -40,20 +40,10 @@ if (isset($_GET['billet'])) {
     ?>
 </div>
 
-<H4>Commentaires :</H4>
+<H4 class="titrecom"><a id="liencom" href="#haha">Commentaires :</a></H4>
 
-<form action="" method="post">
-    <label>Commentaire :</label>
-    <input type="text" name="commentaire">
-    <input type="submit" name="envoyer" value="Envoyer">
-</form>
 
 <?php
-if (isset($_POST['accueil'])) {
-    header('Location : ../User.php?id=' . $_SESSION['id']);
-    exit();
-}
-
 if (isset($_POST['envoyer']) && !empty($_POST['commentaire'])) {
     $reqcommentaire = $bdd->prepare('INSERT INTO commentaires(id_billet, pseudo, commentaire, date) VALUES (?, ?, ?, NOW())');
     $reqcommentaire->bindParam(1, $_GET['billet']);
@@ -62,27 +52,37 @@ if (isset($_POST['envoyer']) && !empty($_POST['commentaire'])) {
     $db = $reqcommentaire->execute();
 }
 
-if (isset($_GET["billet"])) {
+if (isset($_GET['billet'])) {
     $billet = $_GET["billet"];
     $recupcommentaire = $bdd->prepare('SELECT id, id_billet, pseudo, commentaire, DATE_FORMAT(date, \'%d/%m/%Y %H:%i:%s\') AS date FROM commentaires WHERE id_billet = ' . $billet . ' ORDER BY id DESC LIMIT 0, 30');
     $recupcommentaire->bindParam(1, $_POST['id']);
     $recupcommentaire->bindParam(2, $_POST['id_billet']);
-    $recupcommentaire->bindParam(3, $_SESSION['pseudo']);
+    $recupcommentaire->bindParam(3, $_POST['pseudo']);
     $recupcommentaire->bindParam(4, $_POST['commentaire']);
     $recupcommentaire->bindParam(5, $_POST['date']);
     $recupcommentaire->execute();
     $db = $recupcommentaire->fetchAll();
 
-    foreach ($db as $com) {
-        echo '<p><strong>' . htmlentities($com['pseudo']) . ' : ' . date($com['date']) . '</strong></p>';
-        echo '<p>' . htmlentities($com['commentaire']) . '</p>';
-    }
 
+    foreach ($db as $com) {
+        echo '<div class="commentaire"><p><strong>' . htmlentities($com['pseudo']) . ' : ' . date($com['date']) . '</strong></p>';
+        echo '<p>' . htmlentities($com['commentaire']) . '</p></div>';
+    }
 }
+?>
+<div class="commentaire">
+    <form action="" method="post">
+        <p id="haha"></p>
+        <textarea id="textcom" name="commentaire" cols="100" rows="4"></textarea>
+        <input class="btncom" type="submit" name="envoyer" value="Envoyer">
+    </form>
+</div>
+<?php
 
 }
 else {
     header('Location: connexionBlog.php');
+
 }
 ?>
 

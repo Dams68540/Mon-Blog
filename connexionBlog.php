@@ -44,7 +44,7 @@ if (isset($_POST['connexion'])) {
 <H1 class="TITRE">PAGE DE CONNEXION</H1>
 
 <div class="barrenav">
-    <a class="navlien" href="blog.php">Accueil</a>
+    <a class="navlien" href="index.php">Accueil</a>
     <a class="navlien" href="Inscription_blog.php">Inscription</a>
 </div>
 

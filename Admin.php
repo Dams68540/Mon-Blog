@@ -78,7 +78,7 @@ $db = $recupBillets->fetchAll();
 
         echo '<div class="billet"><H3 class="titreart">'.$byte['titre'].'</H3>';
         echo '<p id="texte">'.htmlentities($byte['billet']).'</p>';
-        echo '<p class="commentaire padding">'.date($byte['date']).' - '.$byte['pseudo']. $gradeUser . '</p>'.'<p class="commentaire align-right align-up"><a class="btn-com" href="sessionCom.php?billet='.$byte['id'].'">Commentaires</a></p></div>';
+        echo '<p class="commentaire padding">'.date($byte['date']).' - '.$byte['pseudo']. $gradeUser . '</p>'.'<p class="commentaire align-right align-up"><a class="btn-com" href="edit.php?billet='.$byte['id'].'">Edit</a></p></div>';
 
 
     }

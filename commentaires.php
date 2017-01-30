@@ -36,7 +36,7 @@ echo '<p id="textarticle">' . htmlentities($db['billet']) . '</p>';
 ?>
 </div>
 
-<H4>Commentaires :</H4>
+<H4 class="titrecom"><a id="liencom" href="#haha">Commentaires :</a></H4>
 
 
 <?php
@@ -58,9 +58,8 @@ $recupcommentaire->execute();
 $db = $recupcommentaire->fetchAll();
 
 foreach ($db as $com) {
-    echo '<p><strong>' . htmlentities($com['pseudo']) . ' : ' . date($com['date']) . '</strong></p>';
-    echo '<p>' . htmlentities($com['commentaire']) . '</p>';
-
+    echo '<div class="commentaire"><p><strong>' . htmlentities($com['pseudo']) . ' : ' . date($com['date']) . '</strong></p>';
+    echo '<p>' . htmlentities($com['commentaire']) . '</p></div>';
 }
 
 ?>

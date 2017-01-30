@@ -101,3 +101,63 @@ body
     resize: none;
     border: none;
 }
+
+.titrecom
+{
+    text-align: center;
+    background-color: #718596;
+    color: #FFFFFF;
+    margin: 60px auto;
+    width: 1044px;
+    padding: 5px;
+}
+
+.commentaire
+{
+    text-align: center;
+    background-color: #67BDBE;
+    color: #000000;
+    width: 1044px;
+    height: auto;
+    margin: 0px auto;
+    padding: 10px 10px 10px 10px;
+    resize: none;
+}
+
+.btncom
+{
+    height: 40px;
+    margin-bottom: -20px;
+    margin-top: 10px;
+    margin-left: -10px;
+    margin-right: 0px;
+    width: 1064px;
+    background-color: #5DACAB;
+    color: #bededd;
+    font-size: 15px;
+    border: none;
+}
+
+.btncom:hover
+{
+    background-color: #457F7E;
+    color: #FFFFFF;
+}
+
+#liencom
+{
+    color: #FFFFFF;
+    text-decoration: none;
+}
+
+#liencom:hover
+{
+    color: black;
+}
+
+#textcom
+{
+    margin: 5px 85px;
+    resize: none;
+    border: none;
+}
