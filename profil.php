@@ -2,7 +2,7 @@
 session_start();
 if (isset($_SESSION['id']))
 {
-$bdd = new PDO('mysql:host=127.0.0.1;dbname=Blog', 'root', 'toor');
+$bdd = new PDO('mysql:host=localhost:8889;dbname=Blog', 'root', 'root');
 
 $requser = $bdd->query('SELECT id, nom, prenom, mail, pseudo, DATE_FORMAT(dateinscription, \'%d/%m/%Y \') AS dateinscription FROM connexionBlog WHERE id=' . $_SESSION['id']);
 $db = $requser->fetch();

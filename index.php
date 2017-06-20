@@ -1,5 +1,5 @@
 <?php
-$bdd = new PDO('mysql:host=127.0.0.1;dbname=Blog', 'root', 'toor');
+$bdd = new PDO('mysql:host=localhost:8889;dbname=Blog', 'root', 'root');
 
 $articlesParPage = 5;
 $articlesTotalesReq = $bdd->query('SELECT id FROM blog');
@@ -51,7 +51,8 @@ $db = $recupBillets->fetchAll();
 
         echo '<div class="billet"><H3 class="titreart">'.$byte['titre'].'</H3>';
         echo '<p id="texte">'.htmlentities($byte['billet']).'</p>';
-        echo '<p class="commentaire padding">'.date($byte['date']).' - '.$byte['pseudo']. $gradeUser . '</p>'.'<p class="commentaire align-right align-up"><a class="btn-com" href="commentaires.php?billet='.$byte['id'].'">Commentaires</a></p></div>';
+        echo '<p class="commentaire padding">'.date($byte['date']).' - '.$byte['pseudo']. $gradeUser . '</p>'
+            .'<p class="commentaire align-right align-up"><a class="btn-com" href="commentaires.php?billet='.$byte['id'].'">Commentaires</a></p></div>';
 
 
     }
@@ -66,7 +67,7 @@ $db = $recupBillets->fetchAll();
         }
         else
         {
-            echo '<a class="pagination" href="blog.php?page='.$i.'">'.$i.' &nbsp;'.'</a>';
+            echo '<a class="pagination" href="index.php?page='.$i.'">'.$i.' &nbsp;'.'</a>';
         }
     }
     ?>

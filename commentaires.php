@@ -1,6 +1,6 @@
 <?php
 
-$bdd = new PDO('mysql:host=127.0.0.1;dbname=Blog', 'root', 'toor');
+$bdd = new PDO('mysql:host=localhost:8889;dbname=Blog', 'root', 'root');
 
 if (isset($_GET['billet']))
 {
@@ -23,7 +23,7 @@ $db = $recupBillets->fetch();
 <body>
 <H1 class="TITRE">Mon super blog </H1>
 <div class="barrenav">
-<a class="navlien" href="blog.php">Accueil</a>
+<a class="navlien" href="index.php">Accueil</a>
 </div>
 
 <div class="billet">
