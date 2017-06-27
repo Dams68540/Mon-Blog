@@ -1,5 +1,5 @@
 <?php
-$bdd = new PDO('mysql:host=127.0.0.1;dbname=Blog', 'root', 'toor');
+$bdd = new PDO('mysql:host=localhost:8889;dbname=Blog', 'root', 'root');
 session_start();
 if (isset($_SESSION['id']))
 {
